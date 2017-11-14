@@ -1,16 +1,22 @@
 package ucl.cs.catalogues;
 
 import ucl.cs.Book;
+import ucl.cs.LibraryCatalogue;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BritishLibraryCatalogue {
+public class BritishLibraryCatalogue implements LibraryCatalogue{
 
   // imagine that each new instance of this object uses more than 500MB of RAM
-
+  private static BritishLibraryCatalogue instance = new BritishLibraryCatalogue();
   private final Collection<Book> catalogue = allTheBooks();
+
+  public static BritishLibraryCatalogue getInstance(){
+    return instance;
+  }
 
   public List<Book> searchFor(String query) {
     return catalogue.stream()
@@ -23,10 +29,8 @@ public class BritishLibraryCatalogue {
   }
 
 
-  private Collection<Book> allTheBooks() {
-
+  public Collection<Book> allTheBooks() {
     System.out.println("Memory Usage: 500MB...");
-
     return Arrays.asList(
         new Book("A Tale of Two Cities", "Charles Dickens", 1859),
         new Book("Pride and Prejudice", "Jane Austen", 1813),

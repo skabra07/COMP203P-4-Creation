@@ -19,7 +19,7 @@ public class BookSearchQuery {
     this.date2 = p5;
   }
 
-  public List<Book> execute() {
+  public List<Book> execute(LibraryCatalogue libraryCatalogue) {
     StringBuffer query = new StringBuffer();
     if (name1 != null) {
       query.append("FIRSTNAME='").append(name1).append("' ");
@@ -36,6 +36,6 @@ public class BookSearchQuery {
     if (date2 != null) {
       query.append("PUBLISHEDBEFORE(").append(date2).append(") ");
     }
-    return new BritishLibraryCatalogue().searchFor(query.toString());
+    return libraryCatalogue.searchFor(query.toString());
   }
 }
