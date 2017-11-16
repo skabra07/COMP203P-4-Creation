@@ -11,10 +11,12 @@ import java.util.stream.Collectors;
 public class BritishLibraryCatalogue implements LibraryCatalogue{
 
   // imagine that each new instance of this object uses more than 500MB of RAM
-  private static BritishLibraryCatalogue instance = new BritishLibraryCatalogue();
+  private static LibraryCatalogue instance = new BritishLibraryCatalogue();
   private final Collection<Book> catalogue = allTheBooks();
 
-  public static BritishLibraryCatalogue getInstance(){
+  private  BritishLibraryCatalogue(){}
+
+  public static LibraryCatalogue getInstance(){
     return instance;
   }
 

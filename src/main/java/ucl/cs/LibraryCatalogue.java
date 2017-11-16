@@ -8,5 +8,4 @@ import java.util.List;
  */
 public interface LibraryCatalogue {
     List<Book> searchFor(String query);
-    Collection<Book> allTheBooks();
 }
